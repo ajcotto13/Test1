@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 
 const NAV_LINKS = [
   { id: 'learn', label: 'Learn' },
+  { id: 'play', label: '🀄 Play' },
   { id: 'services', label: 'Classes' },
   { id: 'community', label: 'Community' },
   { id: 'events', label: 'Events' },

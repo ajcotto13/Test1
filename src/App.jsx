@@ -3,6 +3,7 @@ import Navigation from './components/Navigation.jsx'
 import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
 import LearningHub from './components/LearningHub.jsx'
+import GameSection from './components/game/GameSection.jsx'
 import Services from './components/Services.jsx'
 import Community from './components/Community.jsx'
 import Events from './components/Events.jsx'
@@ -29,6 +30,7 @@ export default function App() {
         <Hero scrollTo={scrollTo} />
         <About />
         <LearningHub />
+        <GameSection />
         <Services scrollTo={scrollTo} />
         <Community />
         <Events />
