@@ -44,25 +44,10 @@ function PassageCard({ passage, onSelect }) {
 
 function SelectScreen({ onSelect }) {
   return (
-    <div>
-      <div className="text-center mb-10">
-        <div className="text-6xl mb-4">📖</div>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">Choose a Story!</h2>
-        <p className="text-gray-500 text-lg max-w-xl mx-auto">
-          Pick a reading passage below. Read carefully, then answer the questions.
-          Professor Hoot will help if you get stuck! 🦉
-        </p>
-        <div className="flex flex-wrap justify-center gap-3 mt-4 text-sm">
-          <span className="flex items-center gap-1 text-gray-400"><span className="text-yellow-400">★</span> Easy</span>
-          <span className="flex items-center gap-1 text-gray-400"><span className="text-yellow-400">★★</span> Medium</span>
-          <span className="flex items-center gap-1 text-gray-400"><span className="text-yellow-400">★★★</span> Challenge</span>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {PASSAGES.map(p => (
-          <PassageCard key={p.id} passage={p} onSelect={onSelect} />
-        ))}
-      </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {PASSAGES.map(p => (
+        <PassageCard key={p.id} passage={p} onSelect={onSelect} />
+      ))}
     </div>
   )
 }
@@ -308,7 +293,7 @@ function ResultsScreen({ passage, score, onRetry, onSelectNew }) {
   )
 }
 
-export default function ReadingTutor() {
+export default function ReadingTutor({ autoStart = false }) {
   const [screen, setScreen] = useState(SCREEN.SELECT)
   const [passage, setPassage] = useState(null)
   const [finalScore, setFinalScore] = useState(0)
@@ -333,22 +318,21 @@ export default function ReadingTutor() {
   }
 
   return (
-    <section id="reading-tutor" className="py-20 bg-gradient-to-b from-indigo-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header — only shown on select screen */}
+    <section id="reading-tutor" className="py-16 bg-gradient-to-b from-indigo-50 to-white min-h-[60vh]">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {screen === SCREEN.SELECT && (
-          <div className="text-center mb-12">
-            <div className="inline-block bg-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wide px-3 py-1 rounded-full mb-4">
-              Reading Tutor
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-              Reading{' '}
-              <span className="text-indigo-500 italic">Adventure</span>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-indigo-700 mb-3">
+              Choose Your Story!
             </h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Build reading comprehension skills with fun passages and questions.
-              Powered by Professor Hoot, your friendly reading tutor! 🦉
+            <p className="text-indigo-400 text-lg max-w-xl mx-auto">
+              Pick a passage, read carefully, then answer the questions.
             </p>
+            <div className="flex flex-wrap justify-center gap-3 mt-3 text-sm text-indigo-300 font-semibold">
+              <span>⭐ = Easy</span>
+              <span>⭐⭐ = Medium</span>
+              <span>⭐⭐⭐ = Challenge</span>
+            </div>
           </div>
         )}
 
